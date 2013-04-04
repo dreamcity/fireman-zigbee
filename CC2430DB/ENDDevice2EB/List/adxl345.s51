@@ -1,0 +1,3431 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR 8051 C/C++ Compiler V7.30B/W32                   24/Mar/2013  20:02:13 /
+// Copyright 2004-2007 IAR Systems. All rights reserved.                      /
+//                                                                            /
+//    Core               =  plain                                             /
+//    Code model         =  banked                                            /
+//    Data model         =  large                                             /
+//    Calling convention =  xdata reentrant                                   /
+//    Constant location  =  data                                              /
+//    Dptr setup         =  1,16                                              /
+//    Source file        =  C:\Texas Instruments\ZStack-1.4.3-1.2.1\Projects\ /
+//                          zstack\Samples\cc2430-zstack-adxl345\Drivers\adxl /
+//                          345.c                                             /
+//    Command line       =  -f "C:\Texas Instruments\ZStack-1.4.3-1.2.1\Proje /
+//                          cts\zstack\Samples\cc2430-zstack-adxl345\CC2430DB /
+//                          \..\..\..\Tools\CC2430DB\f8wEndev.cfg"            /
+//                          (-DCPU32MHZ -DFORCE_MAC_NEAR -DROOT=__near_func   /
+//                          -DMAC_OPT_FFD=0 -DBLINK_LEDS "-DCONST=const       /
+//                          __code" -DGENERIC=__generic) -f "C:\Texas         /
+//                          Instruments\ZStack-1.4.3-1.2.1\Projects\zstack\Sa /
+//                          mples\cc2430-zstack-adxl345\CC2430DB\..\..\..\Too /
+//                          ls\CC2430DB\f8wConfig.cfg" (-DSECURE=0            /
+//                          -DDEFAULT_CHANLIST=0x00000800                     /
+//                          -DZDAPP_CONFIG_PAN_ID=0xFFFF                      /
+//                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_M /
+//                          ASK=0x007F -DBEACON_REQUEST_DELAY=100             /
+//                          -DBEACON_REQ_DELAY_MASK=0x00FF                    /
+//                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_P /
+//                          OLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7           /
+//                          -DMAX_RREQ_ENTRIES=10 -DAPSC_MAX_FRAME_RETRIES=3  /
+//                          -DNWK_MAX_DATA_RETRIES=2                          /
+//                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9        /
+//                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=20          /
+//                          -DNWK_MAX_BINDING_ENTRIES=10                      /
+//                          -DMAX_BINDING_CLUSTER_IDS=5                       /
+//                          "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07, 0x09,     /
+//                          0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08,   /
+//                          0x0A, 0x0C, 0x0D}" -DRFD_RCVC_ALWAYS_ON=FALSE     /
+//                          -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100           /
+//                          -DRESPONSE_POLL_RATE=100) -DREJOIN_POLL_RATE=440  /
+//                          "C:\Texas Instruments\ZStack-1.4.3-1.2.1\Projects /
+//                          \zstack\Samples\cc2430-zstack-adxl345\Drivers\adx /
+//                          l345.c" -D CC2430EB -D AXD_END -D AXD_END_B -D    /
+//                          NWK_AUTO_POLL -D REFLECTOR -D xZTOOL_P1 -D        /
+//                          xMT_TASK -D xMT_ZDO_FUNC -D xLCD_SUPPORTED=DEBUG  /
+//                          -D xPOWER_SAVING -lC "C:\Texas                    /
+//                          Instruments\ZStack-1.4.3-1.2.1\Projects\zstack\Sa /
+//                          mples\cc2430-zstack-adxl345\CC2430DB\ENDDevice2EB /
+//                          \List\" -lA "C:\Texas Instruments\ZStack-1.4.3-1. /
+//                          2.1\Projects\zstack\Samples\cc2430-zstack-adxl345 /
+//                          \CC2430DB\ENDDevice2EB\List\" --diag_suppress     /
+//                          Pe001,Pa010 --diag_remark pe550 -o "C:\Texas      /
+//                          Instruments\ZStack-1.4.3-1.2.1\Projects\zstack\Sa /
+//                          mples\cc2430-zstack-adxl345\CC2430DB\ENDDevice2EB /
+//                          \Obj\" -e --require_prototypes -z2 --no_cse       /
+//                          --no_unroll --no_inline --no_code_motion          /
+//                          --no_tbaa --debug --core=plain --dptr=16,1        /
+//                          --data_model=large --code_model=banked            /
+//                          --calling_convention=xdata_reentrant              /
+//                          --place_constants=data --nr_virtual_regs 8 -I     /
+//                          "C:\Texas Instruments\ZStack-1.4.3-1.2.1\Projects /
+//                          \zstack\Samples\cc2430-zstack-adxl345\CC2430DB\"  /
+//                          -I "C:\Texas Instruments\ZStack-1.4.3-1.2.1\Proje /
+//                          cts\zstack\Samples\cc2430-zstack-adxl345\CC2430DB /
+//                          \..\SOURCE\" -I "C:\Texas                         /
+//                          Instruments\ZStack-1.4.3-1.2.1\Projects\zstack\Sa /
+//                          mples\cc2430-zstack-adxl345\CC2430DB\..\Drivers\" /
+//                           -I "C:\Texas Instruments\ZStack-1.4.3-1.2.1\Proj /
+//                          ects\zstack\Samples\cc2430-zstack-adxl345\CC2430D /
+//                          B\..\..\..\ZMAIN\TI2430DB\" -I "C:\Texas          /
+//                          Instruments\ZStack-1.4.3-1.2.1\Projects\zstack\Sa /
+//                          mples\cc2430-zstack-adxl345\CC2430DB\..\..\..\..\ /
+//                          ..\COMPONENTS\MT\" -I "C:\Texas                   /
+//                          Instruments\ZStack-1.4.3-1.2.1\Projects\zstack\Sa /
+//                          mples\cc2430-zstack-adxl345\CC2430DB\..\..\..\..\ /
+//                          ..\COMPONENTS\HAL\INCLUDE\" -I "C:\Texas          /
+//                          Instruments\ZStack-1.4.3-1.2.1\Projects\zstack\Sa /
+//                          mples\cc2430-zstack-adxl345\CC2430DB\..\..\..\..\ /
+//                          ..\COMPONENTS\HAL\TARGET\CC2430EB\" -I "C:\Texas  /
+//                          Instruments\ZStack-1.4.3-1.2.1\Projects\zstack\Sa /
+//                          mples\cc2430-zstack-adxl345\CC2430DB\..\..\..\..\ /
+//                          ..\COMPONENTS\OSAL\MCU\CCSOC\" -I "C:\Texas       /
+//                          Instruments\ZStack-1.4.3-1.2.1\Projects\zstack\Sa /
+//                          mples\cc2430-zstack-adxl345\CC2430DB\..\..\..\..\ /
+//                          ..\COMPONENTS\OSAL\INCLUDE\" -I "C:\Texas         /
+//                          Instruments\ZStack-1.4.3-1.2.1\Projects\zstack\Sa /
+//                          mples\cc2430-zstack-adxl345\CC2430DB\..\..\..\..\ /
+//                          ..\COMPONENTS\STACK\AF\" -I "C:\Texas             /
+//                          Instruments\ZStack-1.4.3-1.2.1\Projects\zstack\Sa /
+//                          mples\cc2430-zstack-adxl345\CC2430DB\..\..\..\..\ /
+//                          ..\COMPONENTS\STACK\NWK\" -I "C:\Texas            /
+//                          Instruments\ZStack-1.4.3-1.2.1\Projects\zstack\Sa /
+//                          mples\cc2430-zstack-adxl345\CC2430DB\..\..\..\..\ /
+//                          ..\COMPONENTS\STACK\SEC\" -I "C:\Texas            /
+//                          Instruments\ZStack-1.4.3-1.2.1\Projects\zstack\Sa /
+//                          mples\cc2430-zstack-adxl345\CC2430DB\..\..\..\..\ /
+//                          ..\COMPONENTS\STACK\SYS\" -I "C:\Texas            /
+//                          Instruments\ZStack-1.4.3-1.2.1\Projects\zstack\Sa /
+//                          mples\cc2430-zstack-adxl345\CC2430DB\..\..\..\..\ /
+//                          ..\COMPONENTS\STACK\ZDO\" -I "C:\Texas            /
+//                          Instruments\ZStack-1.4.3-1.2.1\Projects\zstack\Sa /
+//                          mples\cc2430-zstack-adxl345\CC2430DB\..\..\..\..\ /
+//                          ..\COMPONENTS\ZMAC\F8W\" -I "C:\Texas             /
+//                          Instruments\ZStack-1.4.3-1.2.1\Projects\zstack\Sa /
+//                          mples\cc2430-zstack-adxl345\CC2430DB\..\..\..\..\ /
+//                          ..\COMPONENTS\ZMAC\" -I "C:\Texas                 /
+//                          Instruments\ZStack-1.4.3-1.2.1\Projects\zstack\Sa /
+//                          mples\cc2430-zstack-adxl345\CC2430DB\..\..\..\..\ /
+//                          ..\COMPONENTS\SERVICES\SADDR\" -I "C:\Texas       /
+//                          Instruments\ZStack-1.4.3-1.2.1\Projects\zstack\Sa /
+//                          mples\cc2430-zstack-adxl345\CC2430DB\..\..\..\..\ /
+//                          ..\COMPONENTS\SERVICES\SDATA\" -I "C:\Texas       /
+//                          Instruments\ZStack-1.4.3-1.2.1\Projects\zstack\Sa /
+//                          mples\cc2430-zstack-adxl345\CC2430DB\..\..\..\..\ /
+//                          ..\COMPONENTS\MAC\INCLUDE\" -I "C:\Texas          /
+//                          Instruments\ZStack-1.4.3-1.2.1\Projects\zstack\Sa /
+//                          mples\cc2430-zstack-adxl345\CC2430DB\..\..\..\..\ /
+//                          ..\COMPONENTS\MAC\HIGH_LEVEL\" -I "C:\Texas       /
+//                          Instruments\ZStack-1.4.3-1.2.1\Projects\zstack\Sa /
+//                          mples\cc2430-zstack-adxl345\CC2430DB\..\..\..\..\ /
+//                          ..\COMPONENTS\MAC\LOW_LEVEL\SRF03\" -I "C:\Texas  /
+//                          Instruments\ZStack-1.4.3-1.2.1\Projects\zstack\Sa /
+//                          mples\cc2430-zstack-adxl345\CC2430DB\..\..\..\..\ /
+//                          ..\COMPONENTS\MAC\LOW_LEVEL\SRF03\SINGLE_CHIP\"   /
+//                          -I "C:\Program Files\IAR Systems\Embedded         /
+//                          Workbench 4.0 Evaluation version\8051\INC\" -I    /
+//                          "C:\Program Files\IAR Systems\Embedded Workbench  /
+//                          4.0 Evaluation version\8051\INC\CLIB\"            /
+//    List file          =  C:\Texas Instruments\ZStack-1.4.3-1.2.1\Projects\ /
+//                          zstack\Samples\cc2430-zstack-adxl345\CC2430DB\END /
+//                          Device2EB\List\adxl345.s51                        /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME adxl345
+
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        EXTERN ??Delay?relay
+        EXTERN ??Delay_1u?relay
+        EXTERN ??I2C_Check_ack?relay
+        EXTERN ??I2C_Start_1?relay
+        EXTERN ??I2C_Stop_1?relay
+        EXTERN ??ReadI2CByte_1?relay
+        EXTERN ??Sendack?relay
+        EXTERN ??Single_Write_ADXL345?relay
+        EXTERN ??WriteI2CByte_1?relay
+        EXTERN ?ALLOC_XSTACK8
+        EXTERN ?BANKED_ENTER_XDATA
+        EXTERN ?BANKED_LEAVE_XDATA
+        EXTERN ?BDISPATCH
+        EXTERN ?BRET
+        EXTERN ?DEALLOC_XSTACK8
+        EXTERN ?FLT_ADD
+        EXTERN ?FLT_DIV
+        EXTERN ?FLT_GE
+        EXTERN ?FLT_MUL
+        EXTERN ?FLT_TO_L
+        EXTERN ?L_MOV_TO_X
+        EXTERN ?L_MOV_X
+        EXTERN ?L_TO_FLT
+        EXTERN ?PUSH_XSTACK_I_ONE
+        EXTERN ?V0
+        EXTERN ?XSP
+        EXTERN ?XSTACK_DISP0_8
+        EXTERN __INIT_XDATA_I
+        EXTERN __INIT_XDATA_Z
+
+        PUBLIC ??Delay?relay
+        FUNCTION ??Delay?relay,0203H
+        PUBLIC ??Delay_1u?relay
+        FUNCTION ??Delay_1u?relay,0203H
+        PUBLIC ??I2C_Check_ack?relay
+        FUNCTION ??I2C_Check_ack?relay,0203H
+        PUBLIC ??I2C_Start_1?relay
+        FUNCTION ??I2C_Start_1?relay,0203H
+        PUBLIC ??I2C_Stop_1?relay
+        FUNCTION ??I2C_Stop_1?relay,0203H
+        PUBLIC ??Init_ADXL345?relay
+        FUNCTION ??Init_ADXL345?relay,0203H
+        PUBLIC ??Multiple_Read_ADXL345?relay
+        FUNCTION ??Multiple_Read_ADXL345?relay,0203H
+        PUBLIC ??ReadI2CByte_1?relay
+        FUNCTION ??ReadI2CByte_1?relay,0203H
+        PUBLIC ??Sendack?relay
+        FUNCTION ??Sendack?relay,0203H
+        PUBLIC ??Single_Read_ADXL345?relay
+        FUNCTION ??Single_Read_ADXL345?relay,0203H
+        PUBLIC ??Single_Write_ADXL345?relay
+        FUNCTION ??Single_Write_ADXL345?relay,0203H
+        PUBLIC ??WriteI2CByte_1?relay
+        FUNCTION ??WriteI2CByte_1?relay,0203H
+        PUBLIC ??conversion?relay
+        FUNCTION ??conversion?relay,0203H
+        PUBLIC ??displayXYZ?relay
+        FUNCTION ??displayXYZ?relay,0203H
+        PUBLIC BUFFER
+        PUBLIC Delay
+        FUNCTION Delay,0203H
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        PUBLIC Delay_1u
+        FUNCTION Delay_1u,080203H
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        PUBLIC I2C_Check_ack
+        FUNCTION I2C_Check_ack,021203H
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC I2C_Start_1
+        FUNCTION I2C_Start_1,021203H
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC I2C_Stop_1
+        FUNCTION I2C_Stop_1,021203H
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC Init_ADXL345
+        FUNCTION Init_ADXL345,021203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC Multiple_Read_ADXL345
+        FUNCTION Multiple_Read_ADXL345,021203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 1, STACK
+        LOCFRAME XSTACK, 10, STACK
+        PUBWEAK P1DIR
+        PUBLIC POS_TEMP
+        PUBLIC ReadI2CByte_1
+        FUNCTION ReadI2CByte_1,021203H
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME XSTACK, 9, STACK
+        PUBLIC Sendack
+        FUNCTION Sendack,021203H
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME XSTACK, 9, STACK
+        PUBLIC Single_Read_ADXL345
+        FUNCTION Single_Read_ADXL345,021203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        PUBLIC Single_Write_ADXL345
+        FUNCTION Single_Write_ADXL345,021203H
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME XSTACK, 9, STACK
+        PUBLIC WriteI2CByte_1
+        FUNCTION WriteI2CByte_1,021203H
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME XSTACK, 9, STACK
+        PUBWEAK _A_P1
+        PUBWEAK __Constant_4048f5c3
+        PUBWEAK __Constant_4079999a
+        PUBWEAK __Constant_41700001
+        PUBWEAK __Constant_42c80000
+        PUBWEAK __Constant_43340000
+        PUBLIC bai
+        PUBLIC conversion
+        FUNCTION conversion,021203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 4, STACK
+        LOCFRAME XSTACK, 38, STACK
+        PUBLIC dis_data
+        PUBLIC displayXYZ
+        FUNCTION displayXYZ,021203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME XSTACK, 21, STACK
+        PUBLIC `ge`
+        PUBLIC qian
+        PUBLIC shi
+        PUBLIC wan
+        
+        CFI Names cfiNames0
+        CFI StackFrame CFA_SP SP DATA
+        CFI StackFrame CFA_PSP16 PSP16 XDATA
+        CFI StackFrame CFA_XSP16 XSP16 XDATA
+        CFI StaticOverlayFrame CFA_IOVERLAY IOVERLAY
+        CFI StaticOverlayFrame CFA_DOVERLAY DOVERLAY
+        CFI Resource `PSW.CY`:1, `B.BR0`:1, `B.BR1`:1, `B.BR2`:1, `B.BR3`:1
+        CFI Resource `B.BR4`:1, `B.BR5`:1, `B.BR6`:1, `B.BR7`:1, `VB.BR8`:1
+        CFI Resource `VB.BR9`:1, `VB.BR10`:1, `VB.BR11`:1, `VB.BR12`:1
+        CFI Resource `VB.BR13`:1, `VB.BR14`:1, `VB.BR15`:1, VB:8, B:8, A:8
+        CFI Resource PSW:8, DPL0:8, DPH0:8, R0:8, R1:8, R2:8, R3:8, R4:8, R5:8
+        CFI Resource R6:8, R7:8, V0:8, V1:8, V2:8, V3:8, V4:8, V5:8, V6:8, V7:8
+        CFI Resource SP:8, PSPH:8, PSPL:8, PSP16:16, XSPH:8, XSPL:8, XSP16:16
+        CFI VirtualResource ?RET:24
+        CFI Resource ?BRET_EXT:8
+        CFI VirtualResource ?RET_HIGH:8, ?RET_LOW:8
+        CFI ResourceParts PSP16 PSPH, PSPL
+        CFI ResourceParts XSP16 XSPH, XSPL
+        CFI ResourceParts ?RET ?BRET_EXT, ?RET_HIGH, ?RET_LOW
+        CFI EndNames cfiNames0
+        
+        CFI Common cfiCommon0 Using cfiNames0
+        CFI CodeAlign 1
+        CFI DataAlign -1
+        CFI ReturnAddress ?RET CODE
+        CFI CFA_DOVERLAY Used
+        CFI CFA_IOVERLAY Used
+        CFI CFA_SP SP+-3
+        CFI CFA_PSP16 PSP16+0
+        CFI CFA_XSP16 XSP16+0
+        CFI `PSW.CY` SameValue
+        CFI `B.BR0` SameValue
+        CFI `B.BR1` SameValue
+        CFI `B.BR2` SameValue
+        CFI `B.BR3` SameValue
+        CFI `B.BR4` SameValue
+        CFI `B.BR5` SameValue
+        CFI `B.BR6` SameValue
+        CFI `B.BR7` SameValue
+        CFI `VB.BR8` SameValue
+        CFI `VB.BR9` SameValue
+        CFI `VB.BR10` SameValue
+        CFI `VB.BR11` SameValue
+        CFI `VB.BR12` SameValue
+        CFI `VB.BR13` SameValue
+        CFI `VB.BR14` SameValue
+        CFI `VB.BR15` SameValue
+        CFI VB SameValue
+        CFI B Undefined
+        CFI A Undefined
+        CFI PSW SameValue
+        CFI DPL0 SameValue
+        CFI DPH0 SameValue
+        CFI R0 Undefined
+        CFI R1 Undefined
+        CFI R2 Undefined
+        CFI R3 Undefined
+        CFI R4 Undefined
+        CFI R5 Undefined
+        CFI R6 SameValue
+        CFI R7 SameValue
+        CFI V0 SameValue
+        CFI V1 SameValue
+        CFI V2 SameValue
+        CFI V3 SameValue
+        CFI V4 SameValue
+        CFI V5 SameValue
+        CFI V6 SameValue
+        CFI V7 SameValue
+        CFI PSPH Undefined
+        CFI PSPL Undefined
+        CFI XSPH Undefined
+        CFI XSPL Undefined
+        CFI ?RET Concat
+        CFI ?BRET_EXT Frame(CFA_SP, 3)
+        CFI ?RET_HIGH Frame(CFA_SP, 2)
+        CFI ?RET_LOW Frame(CFA_SP, 1)
+        CFI EndCommon cfiCommon0
+        
+sqrt                SYMBOL "sqrt"
+acos                SYMBOL "acos"
+HalLcdWriteStringValue SYMBOL "HalLcdWriteStringValue"
+??HalLcdWriteStringValue?relay SYMBOL "?relay", HalLcdWriteStringValue
+??acos?relay        SYMBOL "?relay", acos
+??sqrt?relay        SYMBOL "?relay", sqrt
+Delay               SYMBOL "Delay"
+??Delay?relay       SYMBOL "?relay", Delay
+Delay_1u            SYMBOL "Delay_1u"
+??Delay_1u?relay    SYMBOL "?relay", Delay_1u
+I2C_Check_ack       SYMBOL "I2C_Check_ack"
+??I2C_Check_ack?relay SYMBOL "?relay", I2C_Check_ack
+I2C_Start_1         SYMBOL "I2C_Start_1"
+??I2C_Start_1?relay SYMBOL "?relay", I2C_Start_1
+I2C_Stop_1          SYMBOL "I2C_Stop_1"
+??I2C_Stop_1?relay  SYMBOL "?relay", I2C_Stop_1
+Init_ADXL345        SYMBOL "Init_ADXL345"
+??Init_ADXL345?relay SYMBOL "?relay", Init_ADXL345
+Multiple_Read_ADXL345 SYMBOL "Multiple_Read_ADXL345"
+??Multiple_Read_ADXL345?relay SYMBOL "?relay", Multiple_Read_ADXL345
+ReadI2CByte_1       SYMBOL "ReadI2CByte_1"
+??ReadI2CByte_1?relay SYMBOL "?relay", ReadI2CByte_1
+Sendack             SYMBOL "Sendack"
+??Sendack?relay     SYMBOL "?relay", Sendack
+Single_Read_ADXL345 SYMBOL "Single_Read_ADXL345"
+??Single_Read_ADXL345?relay SYMBOL "?relay", Single_Read_ADXL345
+Single_Write_ADXL345 SYMBOL "Single_Write_ADXL345"
+??Single_Write_ADXL345?relay SYMBOL "?relay", Single_Write_ADXL345
+WriteI2CByte_1      SYMBOL "WriteI2CByte_1"
+??WriteI2CByte_1?relay SYMBOL "?relay", WriteI2CByte_1
+conversion          SYMBOL "conversion"
+??conversion?relay  SYMBOL "?relay", conversion
+displayXYZ          SYMBOL "displayXYZ"
+??displayXYZ?relay  SYMBOL "?relay", displayXYZ
+
+        EXTERN sqrt
+        FUNCTION sqrt,010202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 38, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN acos
+        FUNCTION acos,010202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 38, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN HalLcdWriteStringValue
+        FUNCTION HalLcdWriteStringValue,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 21, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN ??HalLcdWriteStringValue?relay
+        FUNCTION ??HalLcdWriteStringValue?relay,00H
+        EXTERN ??acos?relay
+        FUNCTION ??acos?relay,00H
+        EXTERN ??sqrt?relay
+        FUNCTION ??sqrt?relay,00H
+
+// C:\Texas Instruments\ZStack-1.4.3-1.2.1\Projects\zstack\Samples\cc2430-zstack-adxl345\Drivers\adxl345.c
+//    1 #include <ioCC2430.h>
+
+        ASEGN SFR_AN:DATA:NOROOT,090H
+// union <unnamed> volatile __sfr _A_P1
+_A_P1:
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0feH
+// unsigned char volatile __sfr P1DIR
+P1DIR:
+        DS 1
+//    2 #include <string.h>
+//    3 #include <math.h>
+//    4 #include <stdio.h>
+//    5 #include <math.h>
+//    6 #include "adxl345.h"
+//    7 //#include "LCD3310.h"
+//    8 #define SCL     P1_2
+//    9 #define SDA     P1_3
+//   10 
+//   11 #define SDADirOut P1DIR|=0x08;      //xxxx1M01
+//   12 #define SDADirIn  P1DIR&=~0x08;
+//   13 
+//   14 #define TRUE 1
+//   15 #define FALSE 0
+//   16 #define	SlaveAddress 0xA6 //定义器件在IIC总线中的从地址,根据ALT  ADDRESS地址引脚不同修改
+//   17 
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+//   18 INT8U BUFFER[12];
+BUFFER:
+        DS 12
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+//   19 INT8U POS_TEMP[6];
+POS_TEMP:
+        DS 6
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+//   20 int  dis_data;
+dis_data:
+        DS 2
+        REQUIRE __INIT_XDATA_Z
+//   21 
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+//   22 char wan,qian,bai,shi,ge;
+wan:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+qian:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+bai:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+shi:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+`ge`:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+//   23 
+//   24 void initUARTtest(void);
+//   25 void UartTX_Send_String(char *Data,int len);
+//   26 void conversion(void);
+//   27 
+//   28 void Sendack(unsigned char h);
+//   29 unsigned char I2C_Check_ack();
+//   30 
+//   31 void I2C_Start_1(void);
+//   32 void I2C_Stop_1(void);
+//   33 
+//   34 void WriteI2CByte_1(INT8U b);
+//   35 unsigned char ReadI2CByte_1(void);
+//   36 
+//   37 unsigned char Single_Read_ADXL345(INT8U REG_Address);
+//   38 void Single_Write_ADXL345(INT8U REG_Address,INT8U REG_data);
+//   39 
+//   40 void Init_ADXL345();
+//   41 
+//   42 void Delay_1u(unsigned int microSecs);
+//   43 void Delay(INT16U n);
+//   44 
+//   45 INT8U I2C_Check_ack(void);
+//   46 
+//   47 
+//   48 void Multiple_Read_ADXL345(void);
+//   49 
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//   50 void Delay(INT16U n)      //(5/32)*n   us
+Delay:
+        CFI Block cfiBlock0 Using cfiCommon0
+        CFI Function Delay
+//   51 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   52     INT16U d;
+//   53     for(d=0;d<n;d++);
+        MOV     R0,#0x0
+        MOV     R1,#0x0
+??Delay_0:
+        CLR     C
+        MOV     A,R0
+        SUBB    A,R2
+        MOV     A,R1
+        SUBB    A,R3
+        JNC     ??Delay_1
+        MOV     A,R0
+        ADD     A,#0x1
+        MOV     R0,A
+        MOV     A,R1
+        ADDC    A,#0x0
+        MOV     R1,A
+        SJMP    ??Delay_0
+//   54     for(d=0;d<n;d++);
+??Delay_1:
+        MOV     R0,#0x0
+        MOV     R1,#0x0
+??Delay_2:
+        CLR     C
+        MOV     A,R0
+        SUBB    A,R2
+        MOV     A,R1
+        SUBB    A,R3
+        JNC     ??Delay_3
+        MOV     A,R0
+        ADD     A,#0x1
+        MOV     R0,A
+        MOV     A,R1
+        ADDC    A,#0x0
+        MOV     R1,A
+        SJMP    ??Delay_2
+//   55     for(d=0;d<n;d++);
+??Delay_3:
+        MOV     R0,#0x0
+        MOV     R1,#0x0
+??Delay_4:
+        CLR     C
+        MOV     A,R0
+        SUBB    A,R2
+        MOV     A,R1
+        SUBB    A,R3
+        JNC     ??Delay_5
+        MOV     A,R0
+        ADD     A,#0x1
+        MOV     R0,A
+        MOV     A,R1
+        ADDC    A,#0x0
+        MOV     R1,A
+        SJMP    ??Delay_4
+//   56     for(d=0;d<n;d++);
+??Delay_5:
+        MOV     R0,#0x0
+        MOV     R1,#0x0
+??Delay_6:
+        CLR     C
+        MOV     A,R0
+        SUBB    A,R2
+        MOV     A,R1
+        SUBB    A,R3
+        JNC     ??Delay_7
+        MOV     A,R0
+        ADD     A,#0x1
+        MOV     R0,A
+        MOV     A,R1
+        ADDC    A,#0x0
+        MOV     R1,A
+        SJMP    ??Delay_6
+//   57     for(d=0;d<n;d++);
+??Delay_7:
+        MOV     R0,#0x0
+        MOV     R1,#0x0
+??Delay_8:
+        CLR     C
+        MOV     A,R0
+        SUBB    A,R2
+        MOV     A,R1
+        SUBB    A,R3
+        JNC     ??Delay_9
+        MOV     A,R0
+        ADD     A,#0x1
+        MOV     R0,A
+        MOV     A,R1
+        ADDC    A,#0x0
+        MOV     R1,A
+        SJMP    ??Delay_8
+//   58 }
+??Delay_9:
+        LJMP    ?BRET
+        CFI EndBlock cfiBlock0
+//   59 
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//   60 void Delay_1u(unsigned int microSecs) {
+Delay_1u:
+        CFI Block cfiBlock1 Using cfiCommon0
+        CFI Function Delay_1u
+        ; Saved register size: 0
+        ; Auto size: 0
+//   61     while(microSecs--)
+??Delay_1u_0:
+        MOV     A,R2
+        MOV     R0,A
+        MOV     A,R3
+        MOV     R1,A
+        MOV     A,#-0x1
+        ADD     A,R0
+        MOV     R2,A
+        MOV     A,#-0x1
+        ADDC    A,R1
+        MOV     R3,A
+        MOV     A,#0x0
+        XRL     A,R0
+        JNZ     ??Delay_1u_1
+        MOV     A,#0x0
+        XRL     A,R1
+??Delay_1u_1:
+        JZ      ??Delay_1u_2
+//   62     {
+//   63         /* 32 NOPs == 1 usecs */
+//   64         asm("nop"); asm("nop"); asm("nop"); asm("nop"); asm("nop");
+        nop
+        nop
+        nop
+        nop
+        nop
+//   65         asm("nop"); asm("nop"); asm("nop"); asm("nop"); asm("nop");
+        nop
+        nop
+        nop
+        nop
+        nop
+//   66         asm("nop"); asm("nop"); asm("nop"); asm("nop"); asm("nop");
+        nop
+        nop
+        nop
+        nop
+        nop
+//   67         asm("nop"); asm("nop"); asm("nop"); asm("nop"); asm("nop");
+        nop
+        nop
+        nop
+        nop
+        nop
+//   68         asm("nop"); asm("nop"); asm("nop"); asm("nop"); asm("nop");
+        nop
+        nop
+        nop
+        nop
+        nop
+//   69         asm("nop"); asm("nop"); asm("nop"); asm("nop"); asm("nop");
+        nop
+        nop
+        nop
+        nop
+        nop
+//   70         asm("nop"); asm("nop");
+        nop
+        nop
+        SJMP    ??Delay_1u_0
+//   71     }
+//   72 }
+??Delay_1u_2:
+        LJMP    ?BRET
+        CFI EndBlock cfiBlock1
+//   73 
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//   74 void conversion(void)
+conversion:
+        CFI Block cfiBlock2 Using cfiCommon0
+        CFI Function conversion
+//   75 {
+        FUNCALL conversion, sqrt
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 38, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 38, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL conversion, acos
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 38, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 38, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL conversion, sqrt
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 38, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 38, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        MOV     A,#-0x10
+        LCALL   ?BANKED_ENTER_XDATA
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+        CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+        CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+        CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 16)
+        ; Saved register size: 16
+        ; Auto size: 22
+        MOV     A,#-0x16
+        LCALL   ?ALLOC_XSTACK8
+        CFI CFA_XSP16 add(XSP16, 38)
+//   76     BUFFER[10] = 0xff;
+        MOV     A,#-0x1
+        MOV     DPTR,#(BUFFER + 10)
+        MOVX    @DPTR,A
+//   77     int data[3];
+//   78     float temp[3];
+//   79     float angel;
+//   80     uint8 i;
+//   81     data[0] = (POS_TEMP[1] << 8) + POS_TEMP[0];
+        MOV     DPTR,#(POS_TEMP + 1)
+        MOVX    A,@DPTR
+        MOV     R0,A
+        CLR     A
+        XCH     A,R0
+        MOV     R1,A
+        MOV     DPTR,#POS_TEMP
+        MOVX    A,@DPTR
+        MOV     R3,#0x0
+        ADD     A,R0
+        MOV     R0,A
+        MOV     A,R3
+        ADDC    A,R1
+        MOV     R1,A
+        MOV     A,#0x10
+        LCALL   ?XSTACK_DISP0_8
+        MOV     A,R0
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R1
+        MOVX    @DPTR,A
+//   82     if (data[0] < 0){
+        MOV     A,#0x10
+        LCALL   ?XSTACK_DISP0_8
+        CLR     C
+        MOVX    A,@DPTR
+        SUBB    A,#0x0
+        INC     DPTR
+        MOVX    A,@DPTR
+        SUBB    A,#0x0
+        MOV     C,0xD0 /* PSW */.2
+        XRL     A,PSW
+        RLC     A
+        JNC     ??conversion_0
+//   83 //        data[0] = -data[0];
+//   84         BUFFER[10] &= ~0x01;
+        MOV     DPTR,#(BUFFER + 10)
+        MOVX    A,@DPTR
+        CLR     0xE0 /* A   */.0
+        MOVX    @DPTR,A
+//   85     }
+//   86     data[1] = (POS_TEMP[3] << 8) + POS_TEMP[2];
+??conversion_0:
+        MOV     DPTR,#(POS_TEMP + 3)
+        MOVX    A,@DPTR
+        MOV     R0,A
+        CLR     A
+        XCH     A,R0
+        MOV     R1,A
+        MOV     DPTR,#(POS_TEMP + 2)
+        MOVX    A,@DPTR
+        MOV     R3,#0x0
+        ADD     A,R0
+        MOV     R0,A
+        MOV     A,R3
+        ADDC    A,R1
+        MOV     R1,A
+        MOV     A,#0x12
+        LCALL   ?XSTACK_DISP0_8
+        MOV     A,R0
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R1
+        MOVX    @DPTR,A
+//   87     if (data[1] < 0){
+        MOV     A,#0x12
+        LCALL   ?XSTACK_DISP0_8
+        CLR     C
+        MOVX    A,@DPTR
+        SUBB    A,#0x0
+        INC     DPTR
+        MOVX    A,@DPTR
+        SUBB    A,#0x0
+        MOV     C,0xD0 /* PSW */.2
+        XRL     A,PSW
+        RLC     A
+        JNC     ??conversion_1
+//   88 //        data[1] = -data[1];
+//   89         BUFFER[10] &= ~0x02;
+        MOV     DPTR,#(BUFFER + 10)
+        MOVX    A,@DPTR
+        CLR     0xE0 /* A   */.1
+        MOVX    @DPTR,A
+//   90     }
+//   91     data[2] = (POS_TEMP[5] << 8) + POS_TEMP[4];
+??conversion_1:
+        MOV     DPTR,#(POS_TEMP + 5)
+        MOVX    A,@DPTR
+        MOV     R0,A
+        CLR     A
+        XCH     A,R0
+        MOV     R1,A
+        MOV     DPTR,#(POS_TEMP + 4)
+        MOVX    A,@DPTR
+        MOV     R3,#0x0
+        ADD     A,R0
+        MOV     R0,A
+        MOV     A,R3
+        ADDC    A,R1
+        MOV     R1,A
+        MOV     A,#0x14
+        LCALL   ?XSTACK_DISP0_8
+        MOV     A,R0
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R1
+        MOVX    @DPTR,A
+//   92     if (data[2] < 0){
+        MOV     A,#0x14
+        LCALL   ?XSTACK_DISP0_8
+        CLR     C
+        MOVX    A,@DPTR
+        SUBB    A,#0x0
+        INC     DPTR
+        MOVX    A,@DPTR
+        SUBB    A,#0x0
+        MOV     C,0xD0 /* PSW */.2
+        XRL     A,PSW
+        RLC     A
+        JNC     ??conversion_2
+//   93 //        data[2] = -data[2];
+//   94         BUFFER[10] &= ~0x04;
+        MOV     DPTR,#(BUFFER + 10)
+        MOVX    A,@DPTR
+        CLR     0xE0 /* A   */.2
+        MOVX    @DPTR,A
+//   95     }
+//   96     //计算角度
+//   97  //   temp = sqrt( data[0] * data[0] + data[1] * data[1] + data[2] * data[2]);
+//   98  //   temp = sqrt(data[2]);
+//   99  //   temp = acos((float)(data[2]) / temp);
+//  100 //   temp = acos(temp / data[2] );
+//  101     for (i = 0; i<3; i++)
+??conversion_2:
+        MOV     R6,#0x0
+??conversion_3:
+        MOV     A,R6
+        CLR     C
+        SUBB    A,#0x3
+        JC      $+5
+        LJMP    ??conversion_4 & 0xFFFF
+//  102     {
+//  103        temp[i] = (float)data[i] * 3.9;
+        MOV     A,R6
+        MOV     R0,A
+        MOV     R1,#0x0
+        MOV     A,R0
+        MOV     B,#0x2
+        MUL     AB
+        XCH     A,R0
+        MOV     R2,B
+        MOV     B,#0x0
+        MUL     AB
+        ADD     A,R2
+        MOV     R2,A
+        MOV     B,#0x2
+        MOV     A,R1
+        MUL     AB
+        ADD     A,R2
+        MOV     R1,A
+        MOV     A,#0x10
+        LCALL   ?XSTACK_DISP0_8
+        MOV     A,DPL
+        ADD     A,R0
+        MOV     DPL,A
+        MOV     A,DPH
+        ADDC    A,R1
+        MOV     DPH,A
+        MOVX    A,@DPTR
+        MOV     ?V0 + 4,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     ?V0 + 5,A
+        MOV     A,?V0 + 5
+        RLC     A
+        SUBB    A,0xE0 /* A   */
+        MOV     ?V0 + 6,A
+        MOV     ?V0 + 7,A
+        MOV     R0,#?V0 + 4
+        LCALL   ?L_TO_FLT
+        MOV     DPTR,#__Constant_4079999a
+        MOV     R0,#?V0 + 0
+        LCALL   ?L_MOV_X
+        MOV     R0,#?V0 + 4
+        MOV     R1,#?V0 + 0
+        LCALL   ?FLT_MUL
+        MOV     A,R6
+        MOV     R0,A
+        MOV     R1,#0x0
+        MOV     A,R0
+        MOV     B,#0x4
+        MUL     AB
+        XCH     A,R0
+        MOV     R2,B
+        MOV     B,#0x0
+        MUL     AB
+        ADD     A,R2
+        MOV     R2,A
+        MOV     B,#0x4
+        MOV     A,R1
+        MUL     AB
+        ADD     A,R2
+        MOV     R1,A
+        MOV     A,#0x4
+        LCALL   ?XSTACK_DISP0_8
+        MOV     A,DPL
+        ADD     A,R0
+        MOV     DPL,A
+        MOV     A,DPH
+        ADDC    A,R1
+        MOV     DPH,A
+        MOV     R0,#?V0 + 4
+        LCALL   ?L_MOV_TO_X
+//  104        temp[i] = (float)(temp[i] / 100);
+        MOV     A,R6
+        MOV     R0,A
+        MOV     R1,#0x0
+        MOV     A,R0
+        MOV     B,#0x4
+        MUL     AB
+        XCH     A,R0
+        MOV     R2,B
+        MOV     B,#0x0
+        MUL     AB
+        ADD     A,R2
+        MOV     R2,A
+        MOV     B,#0x4
+        MOV     A,R1
+        MUL     AB
+        ADD     A,R2
+        MOV     R1,A
+        MOV     A,#0x4
+        LCALL   ?XSTACK_DISP0_8
+        MOV     A,DPL
+        ADD     A,R0
+        MOV     DPL,A
+        MOV     A,DPH
+        ADDC    A,R1
+        MOV     DPH,A
+        MOV     R0,#?V0 + 4
+        LCALL   ?L_MOV_X
+        MOV     DPTR,#__Constant_42c80000
+        MOV     R0,#?V0 + 0
+        LCALL   ?L_MOV_X
+        MOV     R0,#?V0 + 4
+        MOV     R1,#?V0 + 0
+        LCALL   ?FLT_DIV
+        MOV     A,R6
+        MOV     R0,A
+        MOV     R1,#0x0
+        MOV     A,R0
+        MOV     B,#0x4
+        MUL     AB
+        XCH     A,R0
+        MOV     R2,B
+        MOV     B,#0x0
+        MUL     AB
+        ADD     A,R2
+        MOV     R2,A
+        MOV     B,#0x4
+        MOV     A,R1
+        MUL     AB
+        ADD     A,R2
+        MOV     R1,A
+        MOV     A,#0x4
+        LCALL   ?XSTACK_DISP0_8
+        MOV     A,DPL
+        ADD     A,R0
+        MOV     DPL,A
+        MOV     A,DPH
+        ADDC    A,R1
+        MOV     DPH,A
+        MOV     R0,#?V0 + 4
+        LCALL   ?L_MOV_TO_X
+//  105     }
+        INC     R6
+        LJMP    ??conversion_3 & 0xFFFF
+//  106     
+//  107     //temp = temp / 3.14 * 180;
+//  108     angel = sqrt(temp[0] * temp[0] + temp[1] * temp[1] + temp[2] * temp[2]);
+??conversion_4:
+        ; Setup parameters for call to function sqrt
+        MOV     A,#0x4
+        LCALL   ?XSTACK_DISP0_8
+        MOV     R0,#?V0 + 0
+        LCALL   ?L_MOV_X
+        MOV     A,#0x4
+        LCALL   ?XSTACK_DISP0_8
+        MOV     R0,#?V0 + 4
+        LCALL   ?L_MOV_X
+        MOV     R0,#?V0 + 0
+        MOV     R1,#?V0 + 4
+        LCALL   ?FLT_MUL
+        PUSH    ?V0 + 0
+        CFI CFA_SP SP+-1
+        PUSH    ?V0 + 1
+        CFI CFA_SP SP+-2
+        PUSH    ?V0 + 2
+        CFI CFA_SP SP+-3
+        PUSH    ?V0 + 3
+        CFI CFA_SP SP+-4
+        MOV     A,#0x8
+        LCALL   ?XSTACK_DISP0_8
+        MOV     R0,#?V0 + 4
+        LCALL   ?L_MOV_X
+        MOV     A,#0x8
+        LCALL   ?XSTACK_DISP0_8
+        MOV     R0,#?V0 + 0
+        LCALL   ?L_MOV_X
+        MOV     R0,#?V0 + 4
+        MOV     R1,#?V0 + 0
+        LCALL   ?FLT_MUL
+        POP     ?V0 + 3
+        CFI CFA_SP SP+-3
+        POP     ?V0 + 2
+        CFI CFA_SP SP+-2
+        POP     ?V0 + 1
+        CFI CFA_SP SP+-1
+        POP     ?V0 + 0
+        CFI CFA_SP SP+0
+        MOV     R0,#?V0 + 0
+        MOV     R1,#?V0 + 4
+        LCALL   ?FLT_ADD
+        PUSH    ?V0 + 0
+        CFI CFA_SP SP+-1
+        PUSH    ?V0 + 1
+        CFI CFA_SP SP+-2
+        PUSH    ?V0 + 2
+        CFI CFA_SP SP+-3
+        PUSH    ?V0 + 3
+        CFI CFA_SP SP+-4
+        MOV     A,#0xc
+        LCALL   ?XSTACK_DISP0_8
+        MOV     R0,#?V0 + 4
+        LCALL   ?L_MOV_X
+        MOV     A,#0xc
+        LCALL   ?XSTACK_DISP0_8
+        MOV     R0,#?V0 + 0
+        LCALL   ?L_MOV_X
+        MOV     R0,#?V0 + 4
+        MOV     R1,#?V0 + 0
+        LCALL   ?FLT_MUL
+        POP     ?V0 + 3
+        CFI CFA_SP SP+-3
+        POP     ?V0 + 2
+        CFI CFA_SP SP+-2
+        POP     ?V0 + 1
+        CFI CFA_SP SP+-1
+        POP     ?V0 + 0
+        CFI CFA_SP SP+0
+        MOV     R0,#?V0 + 0
+        MOV     R1,#?V0 + 4
+        LCALL   ?FLT_ADD
+        MOV     R2,?V0 + 0
+        MOV     R3,?V0 + 1
+        MOV     R4,?V0 + 2
+        MOV     R5,?V0 + 3
+        LCALL   ??sqrt?relay
+        MOV     ?V0 + 0,R2
+        MOV     ?V0 + 1,R3
+        MOV     ?V0 + 2,R4
+        MOV     ?V0 + 3,R5
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOV     R0,#?V0 + 0
+        LCALL   ?L_MOV_TO_X
+//  109     angel = acos(temp[2] / angel);
+        ; Setup parameters for call to function acos
+        MOV     A,#0xc
+        LCALL   ?XSTACK_DISP0_8
+        MOV     R0,#?V0 + 4
+        LCALL   ?L_MOV_X
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOV     R0,#?V0 + 0
+        LCALL   ?L_MOV_X
+        MOV     R0,#?V0 + 4
+        MOV     R1,#?V0 + 0
+        LCALL   ?FLT_DIV
+        MOV     R2,?V0 + 4
+        MOV     R3,?V0 + 5
+        MOV     R4,?V0 + 6
+        MOV     R5,?V0 + 7
+        LCALL   ??acos?relay
+        MOV     ?V0 + 0,R2
+        MOV     ?V0 + 1,R3
+        MOV     ?V0 + 2,R4
+        MOV     ?V0 + 3,R5
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOV     R0,#?V0 + 0
+        LCALL   ?L_MOV_TO_X
+//  110     angel = angel / 3.14 * 180;
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOV     R0,#?V0 + 0
+        LCALL   ?L_MOV_X
+        MOV     DPTR,#__Constant_4048f5c3
+        MOV     R0,#?V0 + 4
+        LCALL   ?L_MOV_X
+        MOV     R0,#?V0 + 0
+        MOV     R1,#?V0 + 4
+        LCALL   ?FLT_DIV
+        MOV     DPTR,#__Constant_43340000
+        MOV     R0,#?V0 + 4
+        LCALL   ?L_MOV_X
+        MOV     R0,#?V0 + 0
+        MOV     R1,#?V0 + 4
+        LCALL   ?FLT_MUL
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOV     R0,#?V0 + 0
+        LCALL   ?L_MOV_TO_X
+//  111     BUFFER[9] = (INT8U)(angel) / 10 + '0';
+        MOV     B,#0xa
+        PUSH    B
+        CFI CFA_SP SP+-1
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOV     R0,#?V0 + 0
+        LCALL   ?L_MOV_X
+        MOV     R0,#?V0 + 0
+        LCALL   ?FLT_TO_L
+        MOV     A,?V0 + 0
+        POP     B
+        CFI CFA_SP SP+0
+        DIV     AB
+        ADD     A,#0x30
+        MOV     DPTR,#(BUFFER + 9)
+        MOVX    @DPTR,A
+//  112     BUFFER[8] = (INT8U)(angel) % 10 + '0';
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOV     R0,#?V0 + 0
+        LCALL   ?L_MOV_X
+        MOV     R0,#?V0 + 0
+        LCALL   ?FLT_TO_L
+        MOV     A,?V0 + 0
+        MOV     B,#0xa
+        DIV     AB
+        MOV     A,B
+        ADD     A,#0x30
+        MOV     DPTR,#(BUFFER + 8)
+        MOVX    @DPTR,A
+//  113     if (sqrt( temp[0] * temp[0] + temp[1] * temp[1] + temp[2] * temp[2]) > 15){
+        ; Setup parameters for call to function sqrt
+        MOV     A,#0x4
+        LCALL   ?XSTACK_DISP0_8
+        MOV     R0,#?V0 + 0
+        LCALL   ?L_MOV_X
+        MOV     A,#0x4
+        LCALL   ?XSTACK_DISP0_8
+        MOV     R0,#?V0 + 4
+        LCALL   ?L_MOV_X
+        MOV     R0,#?V0 + 0
+        MOV     R1,#?V0 + 4
+        LCALL   ?FLT_MUL
+        PUSH    ?V0 + 0
+        CFI CFA_SP SP+-1
+        PUSH    ?V0 + 1
+        CFI CFA_SP SP+-2
+        PUSH    ?V0 + 2
+        CFI CFA_SP SP+-3
+        PUSH    ?V0 + 3
+        CFI CFA_SP SP+-4
+        MOV     A,#0x8
+        LCALL   ?XSTACK_DISP0_8
+        MOV     R0,#?V0 + 4
+        LCALL   ?L_MOV_X
+        MOV     A,#0x8
+        LCALL   ?XSTACK_DISP0_8
+        MOV     R0,#?V0 + 0
+        LCALL   ?L_MOV_X
+        MOV     R0,#?V0 + 4
+        MOV     R1,#?V0 + 0
+        LCALL   ?FLT_MUL
+        POP     ?V0 + 3
+        CFI CFA_SP SP+-3
+        POP     ?V0 + 2
+        CFI CFA_SP SP+-2
+        POP     ?V0 + 1
+        CFI CFA_SP SP+-1
+        POP     ?V0 + 0
+        CFI CFA_SP SP+0
+        MOV     R0,#?V0 + 0
+        MOV     R1,#?V0 + 4
+        LCALL   ?FLT_ADD
+        PUSH    ?V0 + 0
+        CFI CFA_SP SP+-1
+        PUSH    ?V0 + 1
+        CFI CFA_SP SP+-2
+        PUSH    ?V0 + 2
+        CFI CFA_SP SP+-3
+        PUSH    ?V0 + 3
+        CFI CFA_SP SP+-4
+        MOV     A,#0xc
+        LCALL   ?XSTACK_DISP0_8
+        MOV     R0,#?V0 + 4
+        LCALL   ?L_MOV_X
+        MOV     A,#0xc
+        LCALL   ?XSTACK_DISP0_8
+        MOV     R0,#?V0 + 0
+        LCALL   ?L_MOV_X
+        MOV     R0,#?V0 + 4
+        MOV     R1,#?V0 + 0
+        LCALL   ?FLT_MUL
+        POP     ?V0 + 3
+        CFI CFA_SP SP+-3
+        POP     ?V0 + 2
+        CFI CFA_SP SP+-2
+        POP     ?V0 + 1
+        CFI CFA_SP SP+-1
+        POP     ?V0 + 0
+        CFI CFA_SP SP+0
+        MOV     R0,#?V0 + 0
+        MOV     R1,#?V0 + 4
+        LCALL   ?FLT_ADD
+        MOV     R2,?V0 + 0
+        MOV     R3,?V0 + 1
+        MOV     R4,?V0 + 2
+        MOV     R5,?V0 + 3
+        LCALL   ??sqrt?relay
+        MOV     ?V0 + 4,R2
+        MOV     ?V0 + 5,R3
+        MOV     ?V0 + 6,R4
+        MOV     ?V0 + 7,R5
+        MOV     DPTR,#__Constant_41700001
+        MOV     R0,#?V0 + 0
+        LCALL   ?L_MOV_X
+        MOV     R0,#?V0 + 4
+        MOV     R1,#?V0 + 0
+        LCALL   ?FLT_GE
+        JNC     ??conversion_5
+//  114         BUFFER[11] = 0xFF; //in danger
+        MOV     A,#-0x1
+        MOV     DPTR,#(BUFFER + 11)
+        MOVX    @DPTR,A
+        SJMP    ??conversion_6
+//  115     } else{
+//  116         BUFFER[11] = 0xF0; //safe
+??conversion_5:
+        MOV     A,#-0x10
+        MOV     DPTR,#(BUFFER + 11)
+        MOVX    @DPTR,A
+//  117     }
+//  118 }
+??conversion_6:
+        MOV     A,#0x16
+        LCALL   ?DEALLOC_XSTACK8
+        CFI CFA_XSP16 add(XSP16, 16)
+        MOV     R7,#0x8
+        LJMP    ?BANKED_LEAVE_XDATA
+        CFI EndBlock cfiBlock2
+//  119 
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  120 void I2C_Start_1(void)
+I2C_Start_1:
+        CFI Block cfiBlock3 Using cfiCommon0
+        CFI Function I2C_Start_1
+//  121 {
+        FUNCALL I2C_Start_1, Delay_1u
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL I2C_Start_1, Delay_1u
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL I2C_Start_1, Delay_1u
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL I2C_Start_1, Delay_1u
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        PUSH    DPL
+        CFI DPL0 Frame(CFA_SP, 4)
+        CFI CFA_SP SP+-4
+        PUSH    DPH
+        CFI DPH0 Frame(CFA_SP, 5)
+        CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//  122     /*启动I2C总线的函数，当SCL为高电平时使SDA产生一个负跳变*/
+//  123     SDADirOut;
+        ORL     0xfe,#0x8
+//  124     Delay_1u(1);
+        ; Setup parameters for call to function Delay_1u
+        MOV     R2,#0x1
+        MOV     R3,#0x0
+        LCALL   ??Delay_1u?relay
+//  125     SDA=1;
+        SETB    0x90.3
+//  126     SCL=1;
+        SETB    0x90.2
+//  127     Delay_1u(5);
+        ; Setup parameters for call to function Delay_1u
+        MOV     R2,#0x5
+        MOV     R3,#0x0
+        LCALL   ??Delay_1u?relay
+//  128     SDA=0;
+        CLR     0x90.3
+//  129     Delay_1u(5);
+        ; Setup parameters for call to function Delay_1u
+        MOV     R2,#0x5
+        MOV     R3,#0x0
+        LCALL   ??Delay_1u?relay
+//  130     SCL=0;
+        CLR     0x90.2
+//  131     Delay_1u(5);
+        ; Setup parameters for call to function Delay_1u
+        MOV     R2,#0x5
+        MOV     R3,#0x0
+        LCALL   ??Delay_1u?relay
+//  132 }
+        POP     DPH
+        CFI DPH0 SameValue
+        CFI CFA_SP SP+-4
+        POP     DPL
+        CFI DPL0 SameValue
+        CFI CFA_SP SP+-3
+        LJMP    ?BRET
+        CFI EndBlock cfiBlock3
+        REQUIRE _A_P1
+        REQUIRE P1DIR
+//  133 
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  134 void I2C_Stop_1(void)
+I2C_Stop_1:
+        CFI Block cfiBlock4 Using cfiCommon0
+        CFI Function I2C_Stop_1
+//  135 {
+        FUNCALL I2C_Stop_1, Delay_1u
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL I2C_Stop_1, Delay_1u
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL I2C_Stop_1, Delay_1u
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL I2C_Stop_1, Delay_1u
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL I2C_Stop_1, Delay_1u
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        PUSH    DPL
+        CFI DPL0 Frame(CFA_SP, 4)
+        CFI CFA_SP SP+-4
+        PUSH    DPH
+        CFI DPH0 Frame(CFA_SP, 5)
+        CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//  136     /*终止I2C总线，当SCL为高电平时使SDA产生一个正跳变*/
+//  137     SCL=0;
+        CLR     0x90.2
+//  138     Delay_1u(1);
+        ; Setup parameters for call to function Delay_1u
+        MOV     R2,#0x1
+        MOV     R3,#0x0
+        LCALL   ??Delay_1u?relay
+//  139     SDADirOut;
+        ORL     0xfe,#0x8
+//  140     Delay_1u(1);
+        ; Setup parameters for call to function Delay_1u
+        MOV     R2,#0x1
+        MOV     R3,#0x0
+        LCALL   ??Delay_1u?relay
+//  141     SDA=0;
+        CLR     0x90.3
+//  142     Delay_1u(5);
+        ; Setup parameters for call to function Delay_1u
+        MOV     R2,#0x5
+        MOV     R3,#0x0
+        LCALL   ??Delay_1u?relay
+//  143     SCL=1;
+        SETB    0x90.2
+//  144     Delay_1u(5);
+        ; Setup parameters for call to function Delay_1u
+        MOV     R2,#0x5
+        MOV     R3,#0x0
+        LCALL   ??Delay_1u?relay
+//  145     SDA=1;
+        SETB    0x90.3
+//  146     Delay_1u(5);
+        ; Setup parameters for call to function Delay_1u
+        MOV     R2,#0x5
+        MOV     R3,#0x0
+        LCALL   ??Delay_1u?relay
+//  147 }
+        POP     DPH
+        CFI DPH0 SameValue
+        CFI CFA_SP SP+-4
+        POP     DPL
+        CFI DPL0 SameValue
+        CFI CFA_SP SP+-3
+        LJMP    ?BRET
+        CFI EndBlock cfiBlock4
+        REQUIRE _A_P1
+        REQUIRE P1DIR
+//  148 
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  149 void Sendack(unsigned char h){
+Sendack:
+        CFI Block cfiBlock5 Using cfiCommon0
+        CFI Function Sendack
+        FUNCALL Sendack, Delay_1u
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Sendack, Delay
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Sendack, Delay_1u
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Sendack, Delay_1u
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Sendack, Delay_1u
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        MOV     A,#-0x9
+        LCALL   ?BANKED_ENTER_XDATA
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 9)
+        ; Saved register size: 9
+        ; Auto size: 0
+        MOV     A,R1
+        MOV     R6,A
+//  150     SCL=0;
+        CLR     0x90.2
+//  151     Delay_1u(5);
+        ; Setup parameters for call to function Delay_1u
+        MOV     R2,#0x5
+        MOV     R3,#0x0
+        LCALL   ??Delay_1u?relay
+//  152     SDADirOut;
+        ORL     0xfe,#0x8
+//  153     Delay(5);
+        ; Setup parameters for call to function Delay
+        MOV     R2,#0x5
+        MOV     R3,#0x0
+        LCALL   ??Delay?relay
+//  154     SDA=h&0x01;
+        MOV     A,R6
+        MOV     C,0xE0 /* A   */.0
+        MOV     0x90.3,C
+//  155     Delay_1u(5);
+        ; Setup parameters for call to function Delay_1u
+        MOV     R2,#0x5
+        MOV     R3,#0x0
+        LCALL   ??Delay_1u?relay
+//  156     SCL=1;
+        SETB    0x90.2
+//  157     Delay_1u(5);
+        ; Setup parameters for call to function Delay_1u
+        MOV     R2,#0x5
+        MOV     R3,#0x0
+        LCALL   ??Delay_1u?relay
+//  158     SCL=0;
+        CLR     0x90.2
+//  159     Delay_1u(5);
+        ; Setup parameters for call to function Delay_1u
+        MOV     R2,#0x5
+        MOV     R3,#0x0
+        LCALL   ??Delay_1u?relay
+//  160 }
+        MOV     R7,#0x1
+        LJMP    ?BANKED_LEAVE_XDATA
+        CFI EndBlock cfiBlock5
+        REQUIRE _A_P1
+        REQUIRE P1DIR
+//  161 
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  162 INT8U I2C_Check_ack(void){
+I2C_Check_ack:
+        CFI Block cfiBlock6 Using cfiCommon0
+        CFI Function I2C_Check_ack
+        FUNCALL I2C_Check_ack, Delay_1u
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL I2C_Check_ack, Delay_1u
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL I2C_Check_ack, Delay_1u
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        PUSH    DPL
+        CFI DPL0 Frame(CFA_SP, 4)
+        CFI CFA_SP SP+-4
+        PUSH    DPH
+        CFI DPH0 Frame(CFA_SP, 5)
+        CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//  163     SCL=0;
+        CLR     0x90.2
+//  164     Delay_1u(5);
+        ; Setup parameters for call to function Delay_1u
+        MOV     R2,#0x5
+        MOV     R3,#0x0
+        LCALL   ??Delay_1u?relay
+//  165     SDADirOut;
+        ORL     0xfe,#0x8
+//  166     SDA=1;
+        SETB    0x90.3
+//  167     SDADirIn;
+        ANL     0xfe,#0xf7
+//  168     Delay_1u(5);          //此处是否有必要使SDA先拉高？！？！
+        ; Setup parameters for call to function Delay_1u
+        MOV     R2,#0x5
+        MOV     R3,#0x0
+        LCALL   ??Delay_1u?relay
+//  169     SCL=1;
+        SETB    0x90.2
+//  170     Delay_1u(5);
+        ; Setup parameters for call to function Delay_1u
+        MOV     R2,#0x5
+        MOV     R3,#0x0
+        LCALL   ??Delay_1u?relay
+//  171     if(SDA==1)
+        MOV     C,0x90.3
+        JNC     ??I2C_Check_ack_0
+//  172     {
+//  173         SCL=0;
+        CLR     0x90.2
+//  174         return 0;  //er
+        MOV     R1,#0x0
+        SJMP    ??I2C_Check_ack_1
+//  175     }
+//  176     SCL=0;
+??I2C_Check_ack_0:
+        CLR     0x90.2
+//  177     return 1;
+        MOV     R1,#0x1
+??I2C_Check_ack_1:
+        POP     DPH
+        CFI DPH0 SameValue
+        CFI CFA_SP SP+-4
+        POP     DPL
+        CFI DPL0 SameValue
+        CFI CFA_SP SP+-3
+        LJMP    ?BRET
+        CFI EndBlock cfiBlock6
+        REQUIRE _A_P1
+        REQUIRE P1DIR
+//  178 }
+//  179 
+//  180 
+//  181 
+//  182 
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  183 void WriteI2CByte_1(unsigned char b)
+WriteI2CByte_1:
+        CFI Block cfiBlock7 Using cfiCommon0
+        CFI Function WriteI2CByte_1
+//  184 {
+        FUNCALL WriteI2CByte_1, Delay_1u
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL WriteI2CByte_1, Delay_1u
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL WriteI2CByte_1, Delay_1u
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL WriteI2CByte_1, I2C_Check_ack
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        MOV     A,#-0x9
+        LCALL   ?BANKED_ENTER_XDATA
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 9)
+        ; Saved register size: 9
+        ; Auto size: 0
+        MOV     A,R1
+        MOV     R6,A
+//  185     /*向I2C总线写一个字节*/
+//  186     unsigned char e=8;
+        MOV     R7,#0x8
+//  187     SDADirOut;
+        ORL     0xfe,#0x8
+//  188     while(e--){
+??WriteI2CByte_1_0:
+        MOV     A,R7
+        MOV     R2,A
+        MOV     A,#-0x1
+        ADD     A,R2
+        MOV     R7,A
+        MOV     A,R2
+        JZ      ??WriteI2CByte_1_1
+//  189         SCL=0;
+        CLR     0x90.2
+//  190         Delay_1u(5);
+        ; Setup parameters for call to function Delay_1u
+        MOV     R2,#0x5
+        MOV     R3,#0x0
+        LCALL   ??Delay_1u?relay
+//  191         if(b&0x80)SDA=1;
+        MOV     A,R6
+        MOV     C,0xE0 /* A   */.7
+        JNC     ??WriteI2CByte_1_2
+        SETB    0x90.3
+        SJMP    ??WriteI2CByte_1_3
+//  192         else SDA=0;
+??WriteI2CByte_1_2:
+        CLR     0x90.3
+//  193         b<<=1;
+??WriteI2CByte_1_3:
+        MOV     A,R6
+        CLR     C
+        RLC     A
+        MOV     R6,A
+//  194         Delay_1u(3);
+        ; Setup parameters for call to function Delay_1u
+        MOV     R2,#0x3
+        MOV     R3,#0x0
+        LCALL   ??Delay_1u?relay
+//  195         SCL=1;
+        SETB    0x90.2
+//  196         Delay_1u(5);
+        ; Setup parameters for call to function Delay_1u
+        MOV     R2,#0x5
+        MOV     R3,#0x0
+        LCALL   ??Delay_1u?relay
+        SJMP    ??WriteI2CByte_1_0
+//  197     }
+//  198     SCL=0;
+??WriteI2CByte_1_1:
+        CLR     0x90.2
+//  199     I2C_Check_ack();
+        ; Setup parameters for call to function I2C_Check_ack
+        LCALL   ??I2C_Check_ack?relay
+//  200 }
+        MOV     R7,#0x1
+        LJMP    ?BANKED_LEAVE_XDATA
+        CFI EndBlock cfiBlock7
+        REQUIRE _A_P1
+        REQUIRE P1DIR
+//  201 
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  202 unsigned char ReadI2CByte_1(void)
+ReadI2CByte_1:
+        CFI Block cfiBlock8 Using cfiCommon0
+        CFI Function ReadI2CByte_1
+//  203 {
+        FUNCALL ReadI2CByte_1, Delay_1u
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL ReadI2CByte_1, Delay_1u
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL ReadI2CByte_1, Delay_1u
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        MOV     A,#-0x9
+        LCALL   ?BANKED_ENTER_XDATA
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 9)
+        ; Saved register size: 9
+        ; Auto size: 0
+//  204     /*从I2C总线读一个字节*/
+//  205     unsigned char i=8;
+        MOV     R6,#0x8
+//  206     unsigned char c=0;
+        MOV     R7,#0x0
+//  207     SCL=0;
+        CLR     0x90.2
+//  208     SDADirOut;
+        ORL     0xfe,#0x8
+//  209     SDA=1;
+        SETB    0x90.3
+//  210     Delay_1u(3);
+        ; Setup parameters for call to function Delay_1u
+        MOV     R2,#0x3
+        MOV     R3,#0x0
+        LCALL   ??Delay_1u?relay
+//  211     SDADirIn;
+        ANL     0xfe,#0xf7
+//  212     while(i--){
+??ReadI2CByte_1_0:
+        MOV     A,R6
+        MOV     R2,A
+        MOV     A,#-0x1
+        ADD     A,R2
+        MOV     R6,A
+        MOV     A,R2
+        JZ      ??ReadI2CByte_1_1
+//  213         c<<=1;
+        MOV     A,R7
+        CLR     C
+        RLC     A
+        MOV     R7,A
+//  214         SCL=0;
+        CLR     0x90.2
+//  215         Delay_1u(5);
+        ; Setup parameters for call to function Delay_1u
+        MOV     R2,#0x5
+        MOV     R3,#0x0
+        LCALL   ??Delay_1u?relay
+//  216         SCL=1;
+        SETB    0x90.2
+//  217         Delay_1u(5);
+        ; Setup parameters for call to function Delay_1u
+        MOV     R2,#0x5
+        MOV     R3,#0x0
+        LCALL   ??Delay_1u?relay
+//  218         if(SDA==1)c|=0x01;
+        MOV     C,0x90.3
+        JNC     ??ReadI2CByte_1_2
+        SETB    C
+        MOV     A,R7
+        MOV     0xE0 /* A   */.0,C
+        MOV     R7,A
+        SJMP    ??ReadI2CByte_1_0
+//  219         else c&=0xfe;
+??ReadI2CByte_1_2:
+        CLR     C
+        MOV     A,R7
+        MOV     0xE0 /* A   */.0,C
+        MOV     R7,A
+        SJMP    ??ReadI2CByte_1_0
+//  220     }
+//  221     SCL=0;
+??ReadI2CByte_1_1:
+        CLR     0x90.2
+//  222     SDADirOut;
+        ORL     0xfe,#0x8
+//  223     return c;
+        MOV     A,R7
+        MOV     R1,A
+        MOV     R7,#0x1
+        LJMP    ?BANKED_LEAVE_XDATA
+        CFI EndBlock cfiBlock8
+        REQUIRE _A_P1
+        REQUIRE P1DIR
+//  224 }
+//  225 //******单字节写入*******************************************
+//  226 
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  227 void Single_Write_ADXL345(INT8U REG_Address,INT8U REG_data)
+Single_Write_ADXL345:
+        CFI Block cfiBlock9 Using cfiCommon0
+        CFI Function Single_Write_ADXL345
+//  228 {
+        FUNCALL Single_Write_ADXL345, I2C_Start_1
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Single_Write_ADXL345, WriteI2CByte_1
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Single_Write_ADXL345, WriteI2CByte_1
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Single_Write_ADXL345, WriteI2CByte_1
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Single_Write_ADXL345, I2C_Stop_1
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        MOV     A,#-0x9
+        LCALL   ?BANKED_ENTER_XDATA
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 9)
+        ; Saved register size: 9
+        ; Auto size: 0
+        MOV     A,R1
+        MOV     R6,A
+        MOV     A,R2
+        MOV     R7,A
+//  229     I2C_Start_1();                  //起始信号
+        ; Setup parameters for call to function I2C_Start_1
+        LCALL   ??I2C_Start_1?relay
+//  230     WriteI2CByte_1(SlaveAddress);   //发送设备地址+写信号
+        ; Setup parameters for call to function WriteI2CByte_1
+        MOV     R1,#-0x5a
+        LCALL   ??WriteI2CByte_1?relay
+//  231     WriteI2CByte_1(REG_Address);    //内部寄存器地址，请参考中文pdf22页
+        ; Setup parameters for call to function WriteI2CByte_1
+        MOV     A,R6
+        MOV     R1,A
+        LCALL   ??WriteI2CByte_1?relay
+//  232     WriteI2CByte_1(REG_data);       //内部寄存器数据，请参考中文pdf22页
+        ; Setup parameters for call to function WriteI2CByte_1
+        MOV     A,R7
+        MOV     R1,A
+        LCALL   ??WriteI2CByte_1?relay
+//  233     I2C_Stop_1();                   //发送停止信号
+        ; Setup parameters for call to function I2C_Stop_1
+        LCALL   ??I2C_Stop_1?relay
+//  234 }
+        MOV     R7,#0x1
+        LJMP    ?BANKED_LEAVE_XDATA
+        CFI EndBlock cfiBlock9
+//  235 
+//  236 //********单字节读取*****************************************
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  237 unsigned char Single_Read_ADXL345(INT8U REG_Address)
+Single_Read_ADXL345:
+        CFI Block cfiBlock10 Using cfiCommon0
+        CFI Function Single_Read_ADXL345
+//  238 {  INT8U REG_data;
+        FUNCALL Single_Read_ADXL345, I2C_Start_1
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Single_Read_ADXL345, WriteI2CByte_1
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Single_Read_ADXL345, WriteI2CByte_1
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Single_Read_ADXL345, I2C_Start_1
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Single_Read_ADXL345, WriteI2CByte_1
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Single_Read_ADXL345, ReadI2CByte_1
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Single_Read_ADXL345, Sendack
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Single_Read_ADXL345, I2C_Stop_1
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        MOV     A,#-0x9
+        LCALL   ?BANKED_ENTER_XDATA
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 9)
+        ; Saved register size: 9
+        ; Auto size: 0
+        MOV     A,R1
+        MOV     R6,A
+//  239     I2C_Start_1();                          //起始信号
+        ; Setup parameters for call to function I2C_Start_1
+        LCALL   ??I2C_Start_1?relay
+//  240     WriteI2CByte_1(SlaveAddress);           //发送设备地址+写信号
+        ; Setup parameters for call to function WriteI2CByte_1
+        MOV     R1,#-0x5a
+        LCALL   ??WriteI2CByte_1?relay
+//  241     WriteI2CByte_1(REG_Address);                   //发送存储单元地址，从0开始
+        ; Setup parameters for call to function WriteI2CByte_1
+        MOV     A,R6
+        MOV     R1,A
+        LCALL   ??WriteI2CByte_1?relay
+//  242     I2C_Start_1();                          //起始信号
+        ; Setup parameters for call to function I2C_Start_1
+        LCALL   ??I2C_Start_1?relay
+//  243     WriteI2CByte_1(SlaveAddress+1);         //发送设备地址+读信号
+        ; Setup parameters for call to function WriteI2CByte_1
+        MOV     R1,#-0x59
+        LCALL   ??WriteI2CByte_1?relay
+//  244     REG_data=ReadI2CByte_1();              //读出寄存器数据
+        ; Setup parameters for call to function ReadI2CByte_1
+        LCALL   ??ReadI2CByte_1?relay
+        MOV     A,R1
+        MOV     R7,A
+//  245     Sendack(1);
+        ; Setup parameters for call to function Sendack
+        MOV     R1,#0x1
+        LCALL   ??Sendack?relay
+//  246     I2C_Stop_1();                           //停止信号
+        ; Setup parameters for call to function I2C_Stop_1
+        LCALL   ??I2C_Stop_1?relay
+//  247     return REG_data;
+        MOV     A,R7
+        MOV     R1,A
+        MOV     R7,#0x1
+        LJMP    ?BANKED_LEAVE_XDATA
+        CFI EndBlock cfiBlock10
+//  248 }
+//  249 
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  250 void Init_ADXL345()
+Init_ADXL345:
+        CFI Block cfiBlock11 Using cfiCommon0
+        CFI Function Init_ADXL345
+//  251 {
+        FUNCALL Init_ADXL345, Single_Write_ADXL345
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Init_ADXL345, Single_Write_ADXL345
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Init_ADXL345, Single_Write_ADXL345
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Init_ADXL345, Single_Write_ADXL345
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Init_ADXL345, Single_Write_ADXL345
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Init_ADXL345, Single_Write_ADXL345
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Init_ADXL345, Single_Write_ADXL345
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        PUSH    DPL
+        CFI DPL0 Frame(CFA_SP, 4)
+        CFI CFA_SP SP+-4
+        PUSH    DPH
+        CFI DPH0 Frame(CFA_SP, 5)
+        CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//  252     P1DIR = 0x0C;
+        MOV     0xfe,#0xc
+//  253     Single_Write_ADXL345(0x31,0x0B);   //测量范围,正负16g，13位模式
+        ; Setup parameters for call to function Single_Write_ADXL345
+        MOV     R2,#0xb
+        MOV     R1,#0x31
+        LCALL   ??Single_Write_ADXL345?relay
+//  254     Single_Write_ADXL345(0x2C,0x0F);   //速率设定为12.5 参考pdf13页
+        ; Setup parameters for call to function Single_Write_ADXL345
+        MOV     R2,#0xf
+        MOV     R1,#0x2c
+        LCALL   ??Single_Write_ADXL345?relay
+//  255     Single_Write_ADXL345(0x2D,0x08);   //选择电源模式   参考pdf24页
+        ; Setup parameters for call to function Single_Write_ADXL345
+        MOV     R2,#0x8
+        MOV     R1,#0x2d
+        LCALL   ??Single_Write_ADXL345?relay
+//  256     Single_Write_ADXL345(0x2E,0x80);   //使能 DATA_READY 中断
+        ; Setup parameters for call to function Single_Write_ADXL345
+        MOV     R2,#-0x80
+        MOV     R1,#0x2e
+        LCALL   ??Single_Write_ADXL345?relay
+//  257     Single_Write_ADXL345(0x1E,0x00);   //X 偏移量 根据测试传感器的状态写入pdf29页
+        ; Setup parameters for call to function Single_Write_ADXL345
+        MOV     R2,#0x0
+        MOV     R1,#0x1e
+        LCALL   ??Single_Write_ADXL345?relay
+//  258     Single_Write_ADXL345(0x1F,0x00);   //Y 偏移量 根据测试传感器的状态写入pdf29页
+        ; Setup parameters for call to function Single_Write_ADXL345
+        MOV     R2,#0x0
+        MOV     R1,#0x1f
+        LCALL   ??Single_Write_ADXL345?relay
+//  259     Single_Write_ADXL345(0x20,0x05);   //Z 偏移量 根据测试传感器的状态写入pdf29页
+        ; Setup parameters for call to function Single_Write_ADXL345
+        MOV     R2,#0x5
+        MOV     R1,#0x20
+        LCALL   ??Single_Write_ADXL345?relay
+//  260 }
+        POP     DPH
+        CFI DPH0 SameValue
+        CFI CFA_SP SP+-4
+        POP     DPL
+        CFI DPL0 SameValue
+        CFI CFA_SP SP+-3
+        LJMP    ?BRET
+        CFI EndBlock cfiBlock11
+        REQUIRE P1DIR
+//  261 
+//  262 //*********************************************************
+//  263 //
+//  264 //连续读出ADXL345内部加速度数据，地址范围0x32~0x37
+//  265 //
+//  266 //*********************************************************
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  267 void Multiple_Read_ADXL345(void)
+Multiple_Read_ADXL345:
+        CFI Block cfiBlock12 Using cfiCommon0
+        CFI Function Multiple_Read_ADXL345
+//  268 {   INT8U f;
+        FUNCALL Multiple_Read_ADXL345, I2C_Start_1
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 10, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Multiple_Read_ADXL345, WriteI2CByte_1
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 10, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Multiple_Read_ADXL345, WriteI2CByte_1
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 10, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Multiple_Read_ADXL345, I2C_Start_1
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 10, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Multiple_Read_ADXL345, WriteI2CByte_1
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 10, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Multiple_Read_ADXL345, ReadI2CByte_1
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 10, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Multiple_Read_ADXL345, Sendack
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 10, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Multiple_Read_ADXL345, Sendack
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 10, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Multiple_Read_ADXL345, I2C_Stop_1
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 10, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        MOV     A,#-0xa
+        LCALL   ?BANKED_ENTER_XDATA
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 10)
+        ; Saved register size: 10
+        ; Auto size: 0
+//  269     I2C_Start_1();                          //起始信号
+        ; Setup parameters for call to function I2C_Start_1
+        LCALL   ??I2C_Start_1?relay
+//  270     WriteI2CByte_1(SlaveAddress);           //发送设备地址+写信号
+        ; Setup parameters for call to function WriteI2CByte_1
+        MOV     R1,#-0x5a
+        LCALL   ??WriteI2CByte_1?relay
+//  271     WriteI2CByte_1(0x32);                   //发送存储单元地址，从0x32开始
+        ; Setup parameters for call to function WriteI2CByte_1
+        MOV     R1,#0x32
+        LCALL   ??WriteI2CByte_1?relay
+//  272     I2C_Start_1();                          //起始信号
+        ; Setup parameters for call to function I2C_Start_1
+        LCALL   ??I2C_Start_1?relay
+//  273     WriteI2CByte_1(SlaveAddress+1);         //发送设备地址+读信号
+        ; Setup parameters for call to function WriteI2CByte_1
+        MOV     R1,#-0x59
+        LCALL   ??WriteI2CByte_1?relay
+//  274     for (f=0; f<6; f++)                      //连续读取6个地址数据，存储中BUF
+        MOV     R6,#0x0
+??Multiple_Read_ADXL345_0:
+        MOV     A,R6
+        CLR     C
+        SUBB    A,#0x6
+        JNC     ??Multiple_Read_ADXL345_1
+//  275     {
+//  276         POS_TEMP[f] = ReadI2CByte_1();          //BUF[0]存储0x32地址中的数据
+        ; Setup parameters for call to function ReadI2CByte_1
+        LCALL   ??ReadI2CByte_1?relay
+        MOV     A,R1
+        PUSH    A
+        CFI CFA_SP SP+-1
+        MOV     ?V0 + 0,R6
+        MOV     ?V0 + 1,#0x0
+        MOV     A,?V0 + 0
+        ADD     A,#(POS_TEMP & 0xff)
+        MOV     DPL,A
+        MOV     A,?V0 + 1
+        ADDC    A,#((POS_TEMP >> 8) & 0xff)
+        MOV     DPH,A
+        POP     A
+        CFI CFA_SP SP+0
+        MOVX    @DPTR,A
+//  277         if (f == 5)
+        MOV     A,#0x5
+        XRL     A,R6
+        JNZ     ??Multiple_Read_ADXL345_2
+//  278         {
+//  279             Sendack(1);                //最后一个数据需要回NOACK
+        ; Setup parameters for call to function Sendack
+        MOV     R1,#0x1
+        LCALL   ??Sendack?relay
+        SJMP    ??Multiple_Read_ADXL345_3
+//  280         }
+//  281         else
+//  282         {
+//  283             Sendack(0);                //回应ACK
+??Multiple_Read_ADXL345_2:
+        ; Setup parameters for call to function Sendack
+        MOV     R1,#0x0
+        LCALL   ??Sendack?relay
+//  284         }
+//  285     }
+??Multiple_Read_ADXL345_3:
+        INC     R6
+        SJMP    ??Multiple_Read_ADXL345_0
+//  286     I2C_Stop_1();                          //停止信号
+??Multiple_Read_ADXL345_1:
+        ; Setup parameters for call to function I2C_Stop_1
+        LCALL   ??I2C_Stop_1?relay
+//  287 }
+        MOV     R7,#0x2
+        LJMP    ?BANKED_LEAVE_XDATA
+        CFI EndBlock cfiBlock12
+//  288 
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  289 void displayXYZ(INT8U *pData){
+displayXYZ:
+        CFI Block cfiBlock13 Using cfiCommon0
+        CFI Function displayXYZ
+        FUNCALL displayXYZ, HalLcdWriteStringValue
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 21, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 21, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL displayXYZ, HalLcdWriteStringValue
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 21, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 21, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL displayXYZ, HalLcdWriteStringValue
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 21, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 21, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL displayXYZ, HalLcdWriteStringValue
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 21, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 21, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL displayXYZ, HalLcdWriteStringValue
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 21, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 21, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL displayXYZ, HalLcdWriteStringValue
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 21, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 21, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        MOV     A,#-0x10
+        LCALL   ?BANKED_ENTER_XDATA
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+        CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+        CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+        CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 16)
+        ; Saved register size: 16
+        ; Auto size: 4
+        MOV     A,#-0x4
+        LCALL   ?ALLOC_XSTACK8
+        CFI CFA_XSP16 add(XSP16, 20)
+        MOV     A,#0x2
+        LCALL   ?XSTACK_DISP0_8
+        MOV     A,R2
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R3
+        MOVX    @DPTR,A
+//  290     int  dis_data;
+//  291     uint16 temp;
+//  292     dis_data=(pData[1]<<8)+pData[0];
+        MOV     A,#0x2
+        LCALL   ?XSTACK_DISP0_8
+        MOVX    A,@DPTR
+        MOV     R0,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     DPH,A
+        MOV     DPL,R0
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     R0,A
+        CLR     A
+        XCH     A,R0
+        MOV     R1,A
+        MOV     A,#0x2
+        LCALL   ?XSTACK_DISP0_8
+        MOVX    A,@DPTR
+        MOV     R2,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     DPH,A
+        MOV     DPL,R2
+        MOVX    A,@DPTR
+        MOV     R3,#0x0
+        ADD     A,R0
+        MOV     R0,A
+        MOV     A,R3
+        ADDC    A,R1
+        MOV     R1,A
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOV     A,R0
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R1
+        MOVX    @DPTR,A
+//  293     temp=(uint16)((float)dis_data*3.9);  //计算数据和显示,查考ADXL345快速入门第4页
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOVX    A,@DPTR
+        MOV     ?V0 + 4,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     ?V0 + 5,A
+        MOV     A,?V0 + 5
+        RLC     A
+        SUBB    A,0xE0 /* A   */
+        MOV     ?V0 + 6,A
+        MOV     ?V0 + 7,A
+        MOV     R0,#?V0 + 4
+        LCALL   ?L_TO_FLT
+        MOV     DPTR,#__Constant_4079999a
+        MOV     R0,#?V0 + 0
+        LCALL   ?L_MOV_X
+        MOV     R0,#?V0 + 4
+        MOV     R1,#?V0 + 0
+        LCALL   ?FLT_MUL
+        MOV     R0,#?V0 + 4
+        LCALL   ?FLT_TO_L
+        MOV     R6,?V0 + 4
+        MOV     R7,?V0 + 5
+//  294     if(dis_data<0){
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        CLR     C
+        MOVX    A,@DPTR
+        SUBB    A,#0x0
+        INC     DPTR
+        MOVX    A,@DPTR
+        SUBB    A,#0x0
+        MOV     C,0xD0 /* PSW */.2
+        XRL     A,PSW
+        RLC     A
+        JNC     ??displayXYZ_0
+//  295         dis_data=-dis_data;
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOVX    A,@DPTR
+        MOV     R0,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     R1,A
+        CLR     C
+        CLR     A
+        SUBB    A,R0
+        MOV     R0,A
+        CLR     A
+        SUBB    A,R1
+        MOV     R1,A
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOV     A,R0
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R1
+        MOVX    @DPTR,A
+//  296         HalLcdWriteStringValue("X: -",temp,10,0);
+        ; Setup parameters for call to function HalLcdWriteStringValue
+        MOV     ?V0 + 0,#0x0
+        MOV     R0,#?V0 + 0
+        LCALL   ?PUSH_XSTACK_I_ONE
+        CFI CFA_XSP16 add(XSP16, 21)
+        MOV     R1,#0xa
+        MOV     A,R6
+        MOV     R4,A
+        MOV     A,R7
+        MOV     R5,A
+        MOV     R2,#(`?<Constant "X: -">` & 0xff)
+        MOV     R3,#((`?<Constant "X: -">` >> 8) & 0xff)
+        LCALL   ??HalLcdWriteStringValue?relay
+        MOV     A,#0x1
+        LCALL   ?DEALLOC_XSTACK8
+        CFI CFA_XSP16 add(XSP16, 20)
+        SJMP    ??displayXYZ_1
+//  297     }
+//  298     else
+//  299     {
+//  300         HalLcdWriteStringValue("X:  ",temp,10,0);
+??displayXYZ_0:
+        ; Setup parameters for call to function HalLcdWriteStringValue
+        MOV     ?V0 + 0,#0x0
+        MOV     R0,#?V0 + 0
+        LCALL   ?PUSH_XSTACK_I_ONE
+        CFI CFA_XSP16 add(XSP16, 21)
+        MOV     R1,#0xa
+        MOV     A,R6
+        MOV     R4,A
+        MOV     A,R7
+        MOV     R5,A
+        MOV     R2,#(`?<Constant "X:  ">` & 0xff)
+        MOV     R3,#((`?<Constant "X:  ">` >> 8) & 0xff)
+        LCALL   ??HalLcdWriteStringValue?relay
+        MOV     A,#0x1
+        LCALL   ?DEALLOC_XSTACK8
+        CFI CFA_XSP16 add(XSP16, 20)
+//  301     }
+//  302     dis_data=(pData[3]<<8)+pData[2];  //合成数据
+??displayXYZ_1:
+        MOV     A,#0x2
+        LCALL   ?XSTACK_DISP0_8
+        MOVX    A,@DPTR
+        MOV     R0,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     DPH,A
+        MOV     DPL,R0
+        INC     DPTR
+        INC     DPTR
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     R0,A
+        CLR     A
+        XCH     A,R0
+        MOV     R1,A
+        MOV     A,#0x2
+        LCALL   ?XSTACK_DISP0_8
+        MOVX    A,@DPTR
+        MOV     R2,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     DPH,A
+        MOV     DPL,R2
+        INC     DPTR
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     R3,#0x0
+        ADD     A,R0
+        MOV     R0,A
+        MOV     A,R3
+        ADDC    A,R1
+        MOV     R1,A
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOV     A,R0
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R1
+        MOVX    @DPTR,A
+//  303     temp=(uint16)((float)dis_data*3.9);  //计算数据和显示,查考ADXL345快速入门第4页
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOVX    A,@DPTR
+        MOV     ?V0 + 4,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     ?V0 + 5,A
+        MOV     A,?V0 + 5
+        RLC     A
+        SUBB    A,0xE0 /* A   */
+        MOV     ?V0 + 6,A
+        MOV     ?V0 + 7,A
+        MOV     R0,#?V0 + 4
+        LCALL   ?L_TO_FLT
+        MOV     DPTR,#__Constant_4079999a
+        MOV     R0,#?V0 + 0
+        LCALL   ?L_MOV_X
+        MOV     R0,#?V0 + 4
+        MOV     R1,#?V0 + 0
+        LCALL   ?FLT_MUL
+        MOV     R0,#?V0 + 4
+        LCALL   ?FLT_TO_L
+        MOV     R6,?V0 + 4
+        MOV     R7,?V0 + 5
+//  304     if(dis_data<0){
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        CLR     C
+        MOVX    A,@DPTR
+        SUBB    A,#0x0
+        INC     DPTR
+        MOVX    A,@DPTR
+        SUBB    A,#0x0
+        MOV     C,0xD0 /* PSW */.2
+        XRL     A,PSW
+        RLC     A
+        JNC     ??displayXYZ_2
+//  305         dis_data=-dis_data;
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOVX    A,@DPTR
+        MOV     R0,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     R1,A
+        CLR     C
+        CLR     A
+        SUBB    A,R0
+        MOV     R0,A
+        CLR     A
+        SUBB    A,R1
+        MOV     R1,A
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOV     A,R0
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R1
+        MOVX    @DPTR,A
+//  306         HalLcdWriteStringValue("Y: -",temp,10,1);
+        ; Setup parameters for call to function HalLcdWriteStringValue
+        MOV     ?V0 + 0,#0x1
+        MOV     R0,#?V0 + 0
+        LCALL   ?PUSH_XSTACK_I_ONE
+        CFI CFA_XSP16 add(XSP16, 21)
+        MOV     R1,#0xa
+        MOV     A,R6
+        MOV     R4,A
+        MOV     A,R7
+        MOV     R5,A
+        MOV     R2,#(`?<Constant "Y: -">` & 0xff)
+        MOV     R3,#((`?<Constant "Y: -">` >> 8) & 0xff)
+        LCALL   ??HalLcdWriteStringValue?relay
+        MOV     A,#0x1
+        LCALL   ?DEALLOC_XSTACK8
+        CFI CFA_XSP16 add(XSP16, 20)
+        SJMP    ??displayXYZ_3
+//  307     }
+//  308     else
+//  309     {
+//  310         HalLcdWriteStringValue("Y:  ",temp,10,1);
+??displayXYZ_2:
+        ; Setup parameters for call to function HalLcdWriteStringValue
+        MOV     ?V0 + 0,#0x1
+        MOV     R0,#?V0 + 0
+        LCALL   ?PUSH_XSTACK_I_ONE
+        CFI CFA_XSP16 add(XSP16, 21)
+        MOV     R1,#0xa
+        MOV     A,R6
+        MOV     R4,A
+        MOV     A,R7
+        MOV     R5,A
+        MOV     R2,#(`?<Constant "Y:  ">` & 0xff)
+        MOV     R3,#((`?<Constant "Y:  ">` >> 8) & 0xff)
+        LCALL   ??HalLcdWriteStringValue?relay
+        MOV     A,#0x1
+        LCALL   ?DEALLOC_XSTACK8
+        CFI CFA_XSP16 add(XSP16, 20)
+//  311     }
+//  312     dis_data=(pData[5]<<8)+pData[4];    //合成数据
+??displayXYZ_3:
+        MOV     A,#0x2
+        LCALL   ?XSTACK_DISP0_8
+        MOVX    A,@DPTR
+        MOV     R0,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     DPH,A
+        MOV     DPL,R0
+        INC     DPTR
+        INC     DPTR
+        INC     DPTR
+        INC     DPTR
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     R0,A
+        CLR     A
+        XCH     A,R0
+        MOV     R1,A
+        MOV     A,#0x2
+        LCALL   ?XSTACK_DISP0_8
+        MOVX    A,@DPTR
+        MOV     R2,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     DPH,A
+        MOV     DPL,R2
+        INC     DPTR
+        INC     DPTR
+        INC     DPTR
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     R3,#0x0
+        ADD     A,R0
+        MOV     R0,A
+        MOV     A,R3
+        ADDC    A,R1
+        MOV     R1,A
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOV     A,R0
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R1
+        MOVX    @DPTR,A
+//  313     temp=(uint16)((float)dis_data*3.9);  //计算数据和显示,查考ADXL345快速入门第4页
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOVX    A,@DPTR
+        MOV     ?V0 + 4,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     ?V0 + 5,A
+        MOV     A,?V0 + 5
+        RLC     A
+        SUBB    A,0xE0 /* A   */
+        MOV     ?V0 + 6,A
+        MOV     ?V0 + 7,A
+        MOV     R0,#?V0 + 4
+        LCALL   ?L_TO_FLT
+        MOV     DPTR,#__Constant_4079999a
+        MOV     R0,#?V0 + 0
+        LCALL   ?L_MOV_X
+        MOV     R0,#?V0 + 4
+        MOV     R1,#?V0 + 0
+        LCALL   ?FLT_MUL
+        MOV     R0,#?V0 + 4
+        LCALL   ?FLT_TO_L
+        MOV     R6,?V0 + 4
+        MOV     R7,?V0 + 5
+//  314     if(dis_data<0){
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        CLR     C
+        MOVX    A,@DPTR
+        SUBB    A,#0x0
+        INC     DPTR
+        MOVX    A,@DPTR
+        SUBB    A,#0x0
+        MOV     C,0xD0 /* PSW */.2
+        XRL     A,PSW
+        RLC     A
+        JNC     ??displayXYZ_4
+//  315         dis_data=-dis_data;
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOVX    A,@DPTR
+        MOV     R0,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     R1,A
+        CLR     C
+        CLR     A
+        SUBB    A,R0
+        MOV     R0,A
+        CLR     A
+        SUBB    A,R1
+        MOV     R1,A
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOV     A,R0
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R1
+        MOVX    @DPTR,A
+//  316         HalLcdWriteStringValue("Z: -",temp,10,2);
+        ; Setup parameters for call to function HalLcdWriteStringValue
+        MOV     ?V0 + 0,#0x2
+        MOV     R0,#?V0 + 0
+        LCALL   ?PUSH_XSTACK_I_ONE
+        CFI CFA_XSP16 add(XSP16, 21)
+        MOV     R1,#0xa
+        MOV     A,R6
+        MOV     R4,A
+        MOV     A,R7
+        MOV     R5,A
+        MOV     R2,#(`?<Constant "Z: -">` & 0xff)
+        MOV     R3,#((`?<Constant "Z: -">` >> 8) & 0xff)
+        LCALL   ??HalLcdWriteStringValue?relay
+        MOV     A,#0x1
+        LCALL   ?DEALLOC_XSTACK8
+        CFI CFA_XSP16 add(XSP16, 20)
+        SJMP    ??displayXYZ_5
+//  317     }
+//  318     else
+//  319     {
+//  320         HalLcdWriteStringValue("Z:  ",temp,10,2);
+??displayXYZ_4:
+        ; Setup parameters for call to function HalLcdWriteStringValue
+        MOV     ?V0 + 0,#0x2
+        MOV     R0,#?V0 + 0
+        LCALL   ?PUSH_XSTACK_I_ONE
+        CFI CFA_XSP16 add(XSP16, 21)
+        MOV     R1,#0xa
+        MOV     A,R6
+        MOV     R4,A
+        MOV     A,R7
+        MOV     R5,A
+        MOV     R2,#(`?<Constant "Z:  ">` & 0xff)
+        MOV     R3,#((`?<Constant "Z:  ">` >> 8) & 0xff)
+        LCALL   ??HalLcdWriteStringValue?relay
+        MOV     A,#0x1
+        LCALL   ?DEALLOC_XSTACK8
+        CFI CFA_XSP16 add(XSP16, 20)
+//  321     }
+//  322 }
+??displayXYZ_5:
+        MOV     A,#0x4
+        LCALL   ?DEALLOC_XSTACK8
+        CFI CFA_XSP16 add(XSP16, 16)
+        MOV     R7,#0x8
+        LJMP    ?BANKED_LEAVE_XDATA
+        CFI EndBlock cfiBlock13
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+        DATA
+`?<Initializer for <Constant "X: -">>`:
+        DB "X: -"
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+        DATA
+`?<Initializer for <Constant "X:  ">>`:
+        DB "X:  "
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+        DATA
+`?<Initializer for <Constant "Y: -">>`:
+        DB "Y: -"
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+        DATA
+`?<Initializer for <Constant "Y:  ">>`:
+        DB "Y:  "
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+        DATA
+`?<Initializer for <Constant "Z: -">>`:
+        DB "Z: -"
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+        DATA
+`?<Initializer for <Constant "Z:  ">>`:
+        DB "Z:  "
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+        DATA
+`?<Initializer for __Constant_4079999a>`:
+        DD 4079999AH
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+        DATA
+`?<Initializer for __Constant_42c80000>`:
+        DD 42C80000H
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+        DATA
+`?<Initializer for __Constant_4048f5c3>`:
+        DD 4048F5C3H
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+        DATA
+`?<Initializer for __Constant_43340000>`:
+        DD 43340000H
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+        DATA
+`?<Initializer for __Constant_41700001>`:
+        DD 41700001H
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??Delay?relay:
+        LCALL   ?BDISPATCH
+        DATA
+        DC24    Delay
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??Delay_1u?relay:
+        LCALL   ?BDISPATCH
+        DATA
+        DC24    Delay_1u
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??conversion?relay:
+        LCALL   ?BDISPATCH
+        DATA
+        DC24    conversion
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??I2C_Start_1?relay:
+        LCALL   ?BDISPATCH
+        DATA
+        DC24    I2C_Start_1
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??I2C_Stop_1?relay:
+        LCALL   ?BDISPATCH
+        DATA
+        DC24    I2C_Stop_1
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??Sendack?relay:
+        LCALL   ?BDISPATCH
+        DATA
+        DC24    Sendack
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??I2C_Check_ack?relay:
+        LCALL   ?BDISPATCH
+        DATA
+        DC24    I2C_Check_ack
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??WriteI2CByte_1?relay:
+        LCALL   ?BDISPATCH
+        DATA
+        DC24    WriteI2CByte_1
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??ReadI2CByte_1?relay:
+        LCALL   ?BDISPATCH
+        DATA
+        DC24    ReadI2CByte_1
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??Single_Write_ADXL345?relay:
+        LCALL   ?BDISPATCH
+        DATA
+        DC24    Single_Write_ADXL345
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??Single_Read_ADXL345?relay:
+        LCALL   ?BDISPATCH
+        DATA
+        DC24    Single_Read_ADXL345
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??Init_ADXL345?relay:
+        LCALL   ?BDISPATCH
+        DATA
+        DC24    Init_ADXL345
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??Multiple_Read_ADXL345?relay:
+        LCALL   ?BDISPATCH
+        DATA
+        DC24    Multiple_Read_ADXL345
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??displayXYZ?relay:
+        LCALL   ?BDISPATCH
+        DATA
+        DC24    displayXYZ
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+        DATA
+`?<Constant "X: -">`:
+        DS 5
+        REQUIRE `?<Initializer for <Constant "X: -">>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+        DATA
+`?<Constant "X:  ">`:
+        DS 5
+        REQUIRE `?<Initializer for <Constant "X:  ">>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+        DATA
+`?<Constant "Y: -">`:
+        DS 5
+        REQUIRE `?<Initializer for <Constant "Y: -">>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+        DATA
+`?<Constant "Y:  ">`:
+        DS 5
+        REQUIRE `?<Initializer for <Constant "Y:  ">>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+        DATA
+`?<Constant "Z: -">`:
+        DS 5
+        REQUIRE `?<Initializer for <Constant "Z: -">>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+        DATA
+`?<Constant "Z:  ">`:
+        DS 5
+        REQUIRE `?<Initializer for <Constant "Z:  ">>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+        DATA
+__Constant_4079999a:
+        DS 4
+        REQUIRE `?<Initializer for __Constant_4079999a>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+        DATA
+__Constant_42c80000:
+        DS 4
+        REQUIRE `?<Initializer for __Constant_42c80000>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+        DATA
+__Constant_4048f5c3:
+        DS 4
+        REQUIRE `?<Initializer for __Constant_4048f5c3>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+        DATA
+__Constant_43340000:
+        DS 4
+        REQUIRE `?<Initializer for __Constant_43340000>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+        DATA
+__Constant_41700001:
+        DS 4
+        REQUIRE `?<Initializer for __Constant_41700001>`
+        REQUIRE __INIT_XDATA_I
+
+        END
+// 
+// 2 388 bytes in segment BANKED_CODE
+//    84 bytes in segment BANK_RELAYS
+//     2 bytes in segment SFR_AN
+//    50 bytes in segment XDATA_I
+//    50 bytes in segment XDATA_ID
+//    25 bytes in segment XDATA_Z
+// 
+// 2 502 bytes of CODE  memory (+ 20 bytes shared)
+//     0 bytes of DATA  memory (+  2 bytes shared)
+//    55 bytes of XDATA memory (+ 20 bytes shared)
+//
+//Errors: none
+//Warnings: none
